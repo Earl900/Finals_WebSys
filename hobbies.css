@@ -1,12 +1,16 @@
-body, html {
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
     font-family: Arial, sans-serif;
-    background-image: url('https://c0.wallpaperflare.com/preview/1007/355/640/industry-industry-4-web-network.jpg'); 
+    background-image: url('https://img.freepik.com/free-photo/website-hosting-concept-with-bright-light_23-2149406783.jpg'); 
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    color: white; 
+    color: white;
 }
 
 header {
@@ -14,79 +18,106 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: rgba(0, 0, 0, 0.8); 
-    color: white;
+    background-color: rgba(0, 0, 0, 0.8);
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
 header .logo {
-    font-size: 18px;
+    font-size: 1.5rem;
     font-weight: bold;
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    margin: 0;
-    padding: 0;
-}
-
-nav ul li {
-    margin-left: 20px;
+    gap: 15px;
 }
 
 nav ul li a {
     text-decoration: none;
     color: white;
-    font-size: 16px;
+    font-size: 1rem;
+    transition: color 0.3s ease;
 }
 
-nav ul li a:hover {
-    color: #ff758c; 
+nav ul li a:hover,
+nav ul li a.active {
+    color: #ff758c;
 }
 
-main {
-    padding: 20px;
+.hobbies-section {
+    padding: 50px 20px;
     text-align: center;
-    background: rgba(0, 0, 0, 0.7); 
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
     border-radius: 10px;
     margin: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 .hobbies-section h1 {
+    font-size: 2.5rem;
     margin-bottom: 30px;
-    font-size: 36px;
-    color: white; 
+    color: white;
 }
 
-.hobbies-grid {
+.hobbies-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
     gap: 20px;
     padding: 20px;
 }
 
 .hobby-box {
-    border: 1px solid rgba(255, 255, 255, 0.2); 
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    padding: 10px;
-    background-color: rgba(255, 255, 255, 0.9); 
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Ensures the box is a square */
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hobby-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .hobby-box img {
     width: 100%;
-    border-radius: 5px;
-    height: 150px;
+    height: 100%;
     object-fit: cover;
 }
 
-.hobby-box p {
-    margin-top: 10px;
-    font-size: 16px;
-    color: #333;
+.hobby-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.7); /* Transparent black overlay for text */
+    color: white;
+    padding: 10px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.hobby-box:hover .hobby-info {
+    opacity: 1;
+}
+
+.hobby-info h2 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: #ff758c;
+}
+
+.hobby-info p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #ddd;
 }
